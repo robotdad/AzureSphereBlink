@@ -1,0 +1,23 @@
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build Azure Sphere Apps
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build image for azsphere builds and Start container from build image
+      run: |
+        docker build --target build -t hlbuildimage -f .devcontainer/Dockerfile .
+        docker run --name hlbuildcontainer hlbuildimage
+    - name: Copy container build output
+      run:
+        docker cp hlbuildcontainer:/out HLOutput
+    - name: Publish HL imagepackage
+      uses: actions/upload-artifact@v2
+      with:
+        name: HL imagepackage
+        path: ${{ github.workspace }}/HLOutput/AzureSphereBlink.imagepackage
