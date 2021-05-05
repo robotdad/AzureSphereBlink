@@ -1,0 +1,89 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "Base",
+            "description": "Base configuration using Ninja generator",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "architecture": {
+                "value": "arm",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "AZURE_SPHERE_TARGET_API_SET": "latest-lts"
+            }
+        },
+        {
+            "name": "Windows-Base",
+            "description": "Configuration on Windows for Azure Sphere target",
+            "hidden": true,
+            "inherits": ["Base"],
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
+            },
+            "environment": {
+                "AzureSphereSdkDir": "C:/Program Files (x86)/Microsoft Azure Sphere SDK"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": [ "Windows" ]
+                }
+            }
+        },
+        {
+            "name": "Linux-Base",
+            "description": "Configuration on Linux for Azure Sphere target",
+            "hidden": true,
+            "inherits": ["Base"],
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
+            },
+            "environment": {
+                "AzureSphereSdkDir": "/opt/azurespheresdk/CMakeFiles"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": [ "Linux" ]
+                }
+            }
+        },
+        {
+            "name": "Debug-Build-Windows",
+            "displayName": "Debug",
+            "description": "Azure Sphere Debug build on Windows",
+            "inherits": "Windows-Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Debug-Build-Linux",
+            "displayName": "Debug",
+            "description": "Azure Sphere Debug build on Linux",
+            "inherits": "Linux-Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Release-Build-Windows",
+            "displayName": "Release",
+            "description": "Azure Sphere Release build on Windows",
+            "inherits": "Windows-Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "Release-Build-Linux",
+            "displayName": "Release",
+            "description": "Azure Sphere Release build on Linux",
+            "inherits": "Linux-Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ]
+}
