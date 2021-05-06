@@ -20,4 +20,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Release imagepackage
-        path: ${{ github.workspace }}/RelOutput/Release-Build-Linux/AzureSphereBlink.imagepackage
+        path: ${{ github.workspace }}/RelOutput/AzureSphereBlink.imagepackage
