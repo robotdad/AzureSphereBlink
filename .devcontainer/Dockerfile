@@ -1,8 +1,17 @@
 FROM mcr.microsoft.com/azurespheresdk:latest AS dev
+RUN apt remove cmake -y
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.2/cmake-3.20.2-linux-x86_64.sh 
+RUN sh cmake-3.20.2-linux-x86_64.sh --prefix=/usr/local/ --exclude-subdir 
+RUN rm cmake-3.20.2-linux-x86_64.sh
 
-FROM dev AS build
+FROM dev AS debug-build
 COPY ./ /src/
 WORKDIR /out
-RUN cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE="/opt/azurespheresdk/CMakeFiles/AzureSphereToolchain.cmake" \
-    -DAZURE_SPHERE_TARGET_API_SET="latest-lts" -DCMAKE_BUILD_TYPE="Release" "/src"
-ENTRYPOINT [ "ninja" ]
+RUN cmake --preset="Debug-Build-Linux" "/src"
+ENTRYPOINT [ "ninja", "-C", "build/Release-Build-Linux"]
+
+FROM dev AS release-build
+COPY ./ /src/
+WORKDIR /out
+RUN cmake --preset="Release-Build-Linux" "/src"
+ENTRYPOINT [ "ninja", "-C", "build/Release-Build-Linux" ]

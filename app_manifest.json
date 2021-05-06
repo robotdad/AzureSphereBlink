@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 1,
-  "Name": "Blink5",
+  "Name": "Blink",
   "ComponentId": "77c3c5d9-c35d-4a99-8500-748ae8de7da7",
   "EntryPoint": "/bin/app",
   "CmdArgs": [],

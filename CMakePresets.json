@@ -41,7 +41,7 @@
                 "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
             },
             "environment": {
-                "AzureSphereSdkDir": "/opt/azurespheresdk/CMakeFiles"
+                "AzureSphereSdkDir": "/opt/azurespheresdk"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {

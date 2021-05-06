@@ -11,13 +11,13 @@ jobs:
       uses: actions/checkout@v2
     - name: Build image for azsphere builds and Start container from build image
       run: |
-        docker build --target build -t hlbuildimage -f .devcontainer/Dockerfile .
-        docker run --name hlbuildcontainer hlbuildimage
+        docker build --target release-build -t relbuildimage -f .devcontainer/Dockerfile .
+        docker run --name relbuildcontainer relbuildimage
     - name: Copy container build output
       run:
-        docker cp hlbuildcontainer:/out HLOutput
-    - name: Publish HL imagepackage
+        docker cp relbuildcontainer:/out/build/Release-Build-Linux RelOutput
+    - name: Publish release imagepackage
       uses: actions/upload-artifact@v2
       with:
-        name: HL imagepackage
-        path: ${{ github.workspace }}/HLOutput/AzureSphereBlink.imagepackage
+        name: Release imagepackage
+        path: ${{ github.workspace }}/RelOutput/AzureSphereBlink.imagepackage
