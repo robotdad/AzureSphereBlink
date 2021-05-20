@@ -4,7 +4,7 @@ FROM dev AS debug-build
 COPY ./ /src/
 WORKDIR /src
 RUN cmake --preset="Debug-Build-Linux"
-ENTRYPOINT [ "ninja", "-C", "build/Release-Build-Linux"]
+ENTRYPOINT [ "ninja", "-C", "build/Debug-Build-Linux"]
 
 FROM dev AS release-build
 COPY ./ /src/
