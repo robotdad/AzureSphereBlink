@@ -50,7 +50,7 @@
             }
         },
         {
-            "name": "Debug-Build-Windows",
+            "name": "Debug-Windows",
             "displayName": "Debug",
             "description": "Azure Sphere Debug build on Windows",
             "inherits": "Windows-Base",
@@ -59,7 +59,7 @@
             }
         },
         {
-            "name": "Debug-Build-Linux",
+            "name": "Debug-Linux",
             "displayName": "Debug",
             "description": "Azure Sphere Debug build on Linux",
             "inherits": "Linux-Base",
@@ -68,7 +68,7 @@
             }
         },
         {
-            "name": "Release-Build-Windows",
+            "name": "Release-Windows",
             "displayName": "Release",
             "description": "Azure Sphere Release build on Windows",
             "inherits": "Windows-Base",
@@ -77,13 +77,39 @@
             }
         },
         {
-            "name": "Release-Build-Linux",
+            "name": "Release-Linux",
             "displayName": "Release",
             "description": "Azure Sphere Release build on Linux",
             "inherits": "Linux-Base",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug-Build-Windows",
+            "description": "Debug build on Windows",
+            "displayName": "Debug",
+            "configurePreset": "Debug-Windows"
+        },
+        {
+            "name": "Release-Build-Windows",
+            "description": "Release build on Windows",
+            "displayName": "Release",
+            "configurePreset": "Release-Windows"
+        },
+        {
+            "name": "Release-Build-Linux",
+            "description": "Debug build on Linux",
+            "displayName": "Debug",
+            "configurePreset": "Debug-Linux"
+        },
+        {
+            "name": "Release-Build-Linux",
+            "description": "Release build on Linux",
+            "displayName": "Release",
+            "configurePreset": "Release-Linux"
         }
     ]
 }
