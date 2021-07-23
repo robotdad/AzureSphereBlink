@@ -1,0 +1,8 @@
+# Environment configuration
+info:
+  name: Azure Sphere Blink
+  version: 1.0.0
+  summary: Azure Sphere blink example project
+requires:
+  tools/kitware/cmake: 3.20.1
+  tools/ninja-build/ninja: 1.10.2
