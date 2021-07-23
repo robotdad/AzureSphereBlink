@@ -100,7 +100,7 @@
             "configurePreset": "Release-Windows"
         },
         {
-            "name": "Release-Build-Linux",
+            "name": "Debug-Build-Linux",
             "description": "Debug build on Linux",
             "displayName": "Debug",
             "configurePreset": "Debug-Linux"
