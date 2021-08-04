@@ -6,13 +6,14 @@
             "description": "Base configuration using Ninja generator",
             "hidden": true,
             "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
             "architecture": {
                 "value": "arm",
                 "strategy": "external"
             },
             "cacheVariables": {
-                "AZURE_SPHERE_TARGET_API_SET": "latest-lts"
+                "AZURE_SPHERE_TARGET_API_SET": "latest-lts",
+                "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
             }
         },
         {
@@ -20,9 +21,6 @@
             "description": "Configuration on Windows for Azure Sphere target",
             "hidden": true,
             "inherits": ["Base"],
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
-            },
             "environment": {
                 "AzureSphereSdkDir": "C:/Program Files (x86)/Microsoft Azure Sphere SDK"
             },
@@ -37,9 +35,6 @@
             "description": "Configuration on Linux for Azure Sphere target",
             "hidden": true,
             "inherits": ["Base"],
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "$env{AzureSphereSdkDir}/CMakeFiles/AzureSphereToolchain.cmake"
-            },
             "environment": {
                 "AzureSphereSdkDir": "/opt/azurespheresdk"
             },
