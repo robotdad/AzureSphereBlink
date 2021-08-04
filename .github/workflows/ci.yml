@@ -15,7 +15,7 @@ jobs:
         docker run --name relbuildcontainer relbuildimage
     - name: Copy container build output
       run:
-        docker cp relbuildcontainer:/src/build/Release-Build-Linux RelOutput
+        docker cp relbuildcontainer:/src/build/out/Release-Build-Linux RelOutput
     - name: Publish release imagepackage
       uses: actions/upload-artifact@v2
       with:
